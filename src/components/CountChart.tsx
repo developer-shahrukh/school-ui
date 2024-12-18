@@ -35,6 +35,7 @@ const RadialBarChartWithNoSSR = dynamic(
 );
 
 
+
 function CountChart() {
   return (
     <div className="bg-white rounded-xl w-full h-full p-4">
