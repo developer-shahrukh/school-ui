@@ -1,38 +1,35 @@
-'use client';
+"use client";
 
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
-import {
-  Legend,
-  RadialBar,
-  RadialBarChart,
-  ResponsiveContainer,
-} from "recharts";
+import { RadialBar, ResponsiveContainer } from "recharts";
+
 
 
 const data = [
   {
-    name: "Girls",
-    count: 53,
-    fill: "#8884d8",
-  },
-  {
     name: "Total",
     count: 106,
-    fill: "#8884d8",
+    fill: "white",
+  },
+  {
+    name: "Girls",
+    count: 53,
+    fill: "#FAE27C",
   },
   {
     name: "Boys",
     count: 53,
-    fill: "#83a6ed",
-  }
+    fill: "#C3EBFA",
+  },
 ];
 
-const RadialBarChartWithNoSSR = dynamic(
-  () => import('recharts').then((mod) => mod.RadialBarChart),
+const RadialBarChartWithNoSSR = dynamic<Partial<RadialBarChartProps>>(
+  () => import('recharts').then((mod) => mod.RadialBarChart as any),
   { ssr: false }
 );
+
 
 function CountChart() {
   return (
@@ -43,26 +40,26 @@ function CountChart() {
         <Image src="/moreDark.png" alt="" width={20} height={20} />
       </div>
       {/*CHART */}
-      <div className="w-full h-[75%]">
-       
-      <ResponsiveContainer>
+      <div className="relative w-full h-[75%]">
+        <ResponsiveContainer>
           <RadialBarChartWithNoSSR
             cx="50%"
             cy="50%"
-            innerRadius="10%"
-            outerRadius="80%"
-            barSize={10}
+            innerRadius="40%"
+            outerRadius="100%"
+            barSize={32}
             data={data}
           >
-            <RadialBar
-              label={{ position: 'insideStart', fill: '#fff' }}
-              background
-              dataKey="count"
-            />
-            <Legend iconSize={10} layout="vertical" verticalAlign="middle" />
+            <RadialBar background dataKey="count" />
           </RadialBarChartWithNoSSR>
         </ResponsiveContainer>
-
+        <Image
+          src="/maleFemale.png"
+          alt=""
+          width={50}
+          height={50}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
       {/*BOTTOM */}
       <div className="flex justify-center gap-16">
@@ -77,7 +74,6 @@ function CountChart() {
           <h2 className="text-xs text-gray-300">Girls (55%)</h2>
         </div>
       </div>
-
     </div>
   );
 }
