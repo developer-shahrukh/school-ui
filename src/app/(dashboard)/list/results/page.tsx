@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { assignmentsData, classesData, examsData, resultsData, role } from "@/lib/data";
+import FormModal from "@/components/FormModal";
 
 type Result={
     id:number;
@@ -65,14 +66,14 @@ function ResultListPage() {
             <td className="hidden md:table-cell">{item.date}</td>
             <td>
                 <div className="flex items-center gap-2">
-                    <Link href={`/list/teachers/${item.id}`}>
-                    <button className="w-7 h-7 flex items-center justify-center rounded-full gb-smSky">
-                        <Image src="/edit1.png" alt="" width={16} height={16}/>
-                    </button>
-                    </Link>
-                    {role==="admin" && ( <button className="w-7 h-7 flex items-center justify-center rounded-full gb-smPurple">
-                        <Image src="/delete.png" alt="" width={16} height={16}/>
-                    </button>)}
+                    
+                    {role==="admin" && ( 
+                      <>
+            <FormModal table="result" type="update" data={item}/>
+            <FormModal table="result" type="delete" id={item.id}/>
+            
+                    </>
+                  )}
 
                 </div>
             </td>
@@ -93,9 +94,7 @@ function ResultListPage() {
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-smYellow">
               <Image src="/sort.png" alt="" width={14} height={14} />
             </button>
-            <button className="w-8 h-8 flex items-center justify-center rounded-full bg-smYellow">
-              <Image src="/plus.png" alt="" width={14} height={14} />
-            </button>
+            <FormModal table="result" type="create"/>
           </div>
         </div>
       </div>
