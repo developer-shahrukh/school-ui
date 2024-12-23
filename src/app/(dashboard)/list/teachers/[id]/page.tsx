@@ -1,5 +1,6 @@
 import Announcements from "@/components/Announcements";
 import BigCalendar from "@/components/BigCalender";
+import FormModal from "@/components/FormModal";
 import Performance from "@/components/Performance";
 import Image from "next/image";
 import Link from "next/link";
@@ -25,7 +26,25 @@ function SingleTeacherPage() {
             </div>
 
             <div className="w-2/3 flex flex-col justify-between gap-4">
+            <div className="flex items-center gap-4">
               <h1 className="text-xl text-semibold">Shahrukh Mansuri</h1>
+              <FormModal
+                table="teacher"
+                type="update"
+                data={{
+                  id: 1,
+                  teacherId: "1234567890",
+                  name: "John Doe",
+                  email: "john@doe.com",
+                  photo:
+                    "https://images.pexels.com/photos/2888150/pexels-photo-2888150.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  phone: "1234567890",
+                  subjects: ["Math", "Geometry"],
+                  classes: ["1B", "2A", "3C"],
+                  address: "123 Main St, Anytown, USA",
+                }}
+              />
+              </div>
               <p className="text-sm text-gray-500">
                 Loren ipsum, dolar sit amet consectetur adipisicing elit.
               </p>
@@ -66,8 +85,8 @@ function SingleTeacherPage() {
                 <span className="text-sm text-gray-400">Attendance</span>
               </div>
             </div>
-             {/* CARD */}
-             <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            {/* CARD */}
+            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
               <Image
                 src="/singleBranch.png"
                 alt=""
@@ -80,8 +99,8 @@ function SingleTeacherPage() {
                 <span className="text-sm text-gray-400">Branches</span>
               </div>
             </div>
-             {/* CARD */}
-             <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            {/* CARD */}
+            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
               <Image
                 src="/singleLesson.png"
                 alt=""
@@ -94,8 +113,8 @@ function SingleTeacherPage() {
                 <span className="text-sm text-gray-400">Lessons</span>
               </div>
             </div>
-             {/* CARD */}
-             <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
+            {/* CARD */}
+            <div className="bg-white p-4 rounded-md flex gap-4 w-full md:w-[48%] xl:w-[45%] 2xl:w-[48%]">
               <Image
                 src="/singleClass.png"
                 alt=""
@@ -112,24 +131,34 @@ function SingleTeacherPage() {
         </div>
         {/* BOTTOM */}
         <div className="mt-4 bg-white rounded-md p-4 h-[630px]">
-            <h1 className="">Teacher&apos;s Schedule</h1>
-            <BigCalendar/>
+          <h1 className="">Teacher&apos;s Schedule</h1>
+          <BigCalendar />
         </div>
       </div>
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
-      <div className="bg-white p-4 rounded-md">
-        <h1 className="text-xl font-semibold">Shortcuts</h1>
-        <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
-          <Link className="pg-3 rounded-md bg-smSkyLight" href="/">Teacher&apos;s Students</Link>
-          <Link className="pg-3 rounded-md bg-smPurpleLight" href="/">Teacher&apos;s Classes</Link>
-          <Link className="pg-3 rounded-md bg-smYellowLight" href="/">Teacher&apos;s Lessons</Link>
-          <Link className="pg-3 rounded-md bg-pink-50" href="/">Teacher&apos;s Exams</Link>
-          <Link className="pg-3 rounded-md bg-smSkyLight" href="/">Teacher&apos;s Assignments</Link>
+        <div className="bg-white p-4 rounded-md">
+          <h1 className="text-xl font-semibold">Shortcuts</h1>
+          <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
+            <Link className="pg-3 rounded-md bg-smSkyLight" href="/">
+              Teacher&apos;s Students
+            </Link>
+            <Link className="pg-3 rounded-md bg-smPurpleLight" href="/">
+              Teacher&apos;s Classes
+            </Link>
+            <Link className="pg-3 rounded-md bg-smYellowLight" href="/">
+              Teacher&apos;s Lessons
+            </Link>
+            <Link className="pg-3 rounded-md bg-pink-50" href="/">
+              Teacher&apos;s Exams
+            </Link>
+            <Link className="pg-3 rounded-md bg-smSkyLight" href="/">
+              Teacher&apos;s Assignments
+            </Link>
+          </div>
         </div>
-      </div>
-      <Performance/>
-      <Announcements/> 
+        <Performance />
+        <Announcements />
       </div>
     </div>
   );
